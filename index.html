@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Greeshma K Mani</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<!-- Devicons for skill logos -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Nunito', sans-serif; color: #333; background: #fff; overflow-x: hidden; }
+
+/* ── LOADER ── */
+#loader {
+  position: fixed; inset: 0; background: #fff; z-index: 9999;
+  display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem;
+  transition: opacity 0.5s, visibility 0.5s;
+}
+#loader.done { opacity: 0; visibility: hidden; pointer-events: none; }
+.loader-name { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: #111; }
+.loader-name span { color: #e85d26; }
+.loader-bar { width: 120px; height: 2px; background: #eee; border-radius: 99px; overflow: hidden; }
+.loader-fill { height: 100%; background: #e85d26; animation: lf 1.1s ease forwards; }
+@keyframes lf { from{width:0} to{width:100%} }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(255,255,255,0.96); backdrop-filter: blur(10px);
+  border-bottom: 1px solid #eee;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.85rem 5%;
+  transition: box-shadow 0.3s;
+}
+nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+.nav-brand { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #111; text-decoration: none; }
+.nav-links { display: flex; gap: 1.8rem; list-style: none; }
+.nav-links a { color: #555; text-decoration: none; font-size: 0.88rem; font-weight: 700; letter-spacing: 0.03em; transition: color 0.2s; }
+.nav-links a:hover { color: #e85d26; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.hamburger span { width: 22px; height: 2px; background: #333; display: block; }
+
+/* ── HERO ── */
+#home {
+  min-height: 100vh; display: flex; align-items: center;
+  padding: 6rem 5% 4rem; background: #fafafa;
+}
+.hero-inner {
+  max-width: 1100px; margin: 0 auto; width: 100%;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+}
+.hero-eyebrow {
+  font-size: 0.75rem; font-weight: 800; letter-spacing: 0.2em;
+  text-transform: uppercase; color: #e85d26; margin-bottom: 0.6rem;
+}
+.hero-name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 5.5vw, 5rem); line-height: 1.05;
+  color: #111; margin-bottom: 0.4rem;
+}
+.hero-role { font-size: 1.1rem; color: #666; font-weight: 400; margin-bottom: 0.6rem; }
+.hero-location { font-size: 0.88rem; color: #999; margin-bottom: 1.8rem; display: flex; align-items: center; gap: 0.3rem; }
+.hero-btns { display: flex; gap: 0.9rem; flex-wrap: wrap; margin-bottom: 2rem; }
+.btn {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.7rem 1.5rem; border-radius: 4px;
+  font-size: 0.88rem; font-weight: 700; letter-spacing: 0.04em;
+  text-transform: uppercase; text-decoration: none; transition: all 0.22s; cursor: pointer; border: none;
+}
+.btn-orange { background: #e85d26; color: #fff; }
+.btn-orange:hover { background: #c94d1a; transform: translateY(-2px); box-shadow: 0 6px 18px rgba(232,93,38,0.35); }
+.btn-outline { border: 2px solid #ddd; color: #555; background: transparent; }
+.btn-outline:hover { border-color: #e85d26; color: #e85d26; transform: translateY(-2px); }
+.hero-social { display: flex; gap: 0.7rem; }
+.hero-social a {
+  width: 36px; height: 36px; border-radius: 50%; border: 1.5px solid #ddd;
+  display: flex; align-items: center; justify-content: center;
+  color: #555; font-size: 1rem; text-decoration: none; transition: all 0.2s;
+}
+.hero-social a:hover { border-color: #e85d26; color: #e85d26; transform: translateY(-2px); }
+
+/* ── PHOTO FRAME ── */
+.hero-photo-wrap { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+.hero-photo-frame {
+  width: 300px; height: 300px; border-radius: 50%;
+  border: 5px solid #fff;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.13);
+  overflow: hidden; background: #f0f0f0;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  /* ─────────────────────────────────────────────────── */
+  /* TO ADD PHOTO: replace the placeholder below with:  */
+  /* <img src="your-photo.jpg" ...> inside .hero-photo-frame */
+  /* ─────────────────────────────────────────────────── */
+}
+.hero-photo-placeholder {
+  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+  color: #bbb; text-align: center; font-size: 0.8rem; padding: 1rem;
+}
+.hero-photo-placeholder svg { width: 56px; height: 56px; fill: #ccc; }
+/* When you add a real photo, put it here: */
+/* .hero-photo-frame img { width: 100%; height: 100%; object-fit: cover; } */
+
+/* ── SECTION COMMON ── */
+.section { padding: 5rem 5%; }
+.section-alt { background: #f7f7f7; }
+.section-inner { max-width: 1100px; margin: 0 auto; }
+.section-eyebrow { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: #e85d26; margin-bottom: 0.4rem; }
+.section-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.9rem, 3.5vw, 2.8rem); color: #111; margin-bottom: 0.4rem;
+}
+.section-heading::after { content: ''; display: block; width: 48px; height: 3px; background: #e85d26; margin-top: 0.6rem; }
+.section-sub { color: #777; font-size: 0.97rem; margin-bottom: 2.5rem; max-width: 520px; }
+
+/* ── REVEAL ── */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+.rd1 { transition-delay: 0.08s; } .rd2 { transition-delay: 0.16s; } .rd3 { transition-delay: 0.24s; } .rd4 { transition-delay: 0.32s; }
+
+/* ── ABOUT ── */
+.about-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4rem; align-items: start; }
+.about-text p { color: #555; line-height: 1.9; font-size: 0.97rem; margin-bottom: 1rem; }
+.about-text strong { color: #e85d26; }
+
+/* ── SKILL LOGOS ── */
+.skills-section-inner { margin-top: 1.5rem; }
+.skill-group { margin-bottom: 1.6rem; }
+.skill-group-label { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; color: #aaa; margin-bottom: 0.8rem; }
+.skill-icons { display: flex; flex-wrap: wrap; gap: 1.2rem; }
+.skill-icon-item {
+  display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+  padding: 0.8rem 0.9rem; background: #fff; border: 1.5px solid #eee;
+  border-radius: 10px; min-width: 64px;
+  transition: all 0.22s; cursor: default;
+}
+.skill-icon-item:hover { border-color: #e85d26; transform: translateY(-3px); box-shadow: 0 6px 18px rgba(0,0,0,0.08); }
+.skill-icon-item i { font-size: 1.8rem; }
+.skill-icon-item .skill-img { width: 30px; height: 30px; object-fit: contain; }
+.skill-icon-item span { font-size: 0.68rem; font-weight: 700; color: #666; text-align: center; line-height: 1.2; }
+
+/* Custom icon boxes for tools without devicon */
+.icon-box {
+  width: 30px; height: 30px; border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem; font-weight: 800; color: #fff; letter-spacing: -0.5px;
+}
+
+/* About right stats */
+.about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.stat-box {
+  background: #fff; border: 1px solid #eee; border-radius: 8px;
+  padding: 1.2rem; text-align: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.04); transition: all 0.25s;
+}
+.stat-box:hover { box-shadow: 0 6px 22px rgba(0,0,0,0.1); transform: translateY(-3px); }
+.stat-num { font-family: 'Playfair Display', serif; font-size: 2.1rem; color: #e85d26; line-height: 1; }
+.stat-lbl { font-size: 0.72rem; color: #999; font-weight: 700; letter-spacing: 0.06em; margin-top: 0.3rem; }
+
+/* ── PROJECTS ── */
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 1.8rem; }
+.project-card {
+  background: #fff; border: 1px solid #eee; border-radius: 10px;
+  overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  cursor: pointer; transition: all 0.3s;
+}
+.project-card:hover { transform: translateY(-5px); box-shadow: 0 14px 40px rgba(0,0,0,0.13); }
+.project-thumb {
+  height: 185px; position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+/* ─────────────────────────────────────────────────────────────── */
+/* PROJECT COVER PHOTOS: replace the gradient with an <img> tag   */
+/* inside each .project-thumb, or set background-image in CSS.    */
+/* Example:                                                        */
+/*   .pt-1 { background-image: url('project1-cover.jpg');         */
+/*           background-size: cover; background-position: center;} */
+/* ─────────────────────────────────────────────────────────────── */
+.pt-1 { background: linear-gradient(135deg,#667eea,#764ba2); }
+.pt-2 { background: linear-gradient(135deg,#11998e,#38ef7d); }
+.pt-3 { background: linear-gradient(135deg,#fc4a1a,#f7b733); }
+.project-thumb .thumb-emoji { font-size: 3.5rem; }
+.project-thumb-overlay {
+  position: absolute; inset: 0; background: rgba(0,0,0,0);
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.3s;
+}
+.project-card:hover .project-thumb-overlay { background: rgba(0,0,0,0.25); }
+.overlay-text {
+  color: #fff; font-weight: 800; font-size: 0.82rem; letter-spacing: 0.1em;
+  text-transform: uppercase; opacity: 0; transition: opacity 0.3s;
+  background: rgba(0,0,0,0.4); padding: 0.4rem 1rem; border-radius: 20px;
+}
+.project-card:hover .overlay-text { opacity: 1; }
+.project-body { padding: 1.3rem; }
+.project-cat { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; color: #e85d26; margin-bottom: 0.4rem; }
+.project-title { font-size: 1.02rem; font-weight: 700; color: #111; margin-bottom: 0.5rem; }
+.project-desc { font-size: 0.87rem; color: #666; line-height: 1.7; margin-bottom: 0.8rem; }
+.project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.p-tag { background: #fef4ef; color: #e85d26; font-size: 0.72rem; font-weight: 700; padding: 0.22rem 0.6rem; border-radius: 3px; }
+
+/* ── PROJECT MODAL ── */
+.modal-backdrop {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.65);
+  z-index: 500; display: none; align-items: center; justify-content: center;
+  padding: 1.5rem; backdrop-filter: blur(4px);
+}
+.modal-backdrop.open { display: flex; }
+.modal {
+  background: #fff; border-radius: 12px; max-width: 780px; width: 100%;
+  max-height: 90vh; overflow-y: auto;
+  animation: modal-in 0.3s ease;
+}
+@keyframes modal-in { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
+.modal-header { position: relative; }
+/* ─────────────────────────────────────────────────────────────── */
+/* MODAL COVER PHOTO per project: replace gradient below with     */
+/* background-image: url('project-cover.jpg') or an <img> tag.   */
+/* ─────────────────────────────────────────────────────────────── */
+.modal-cover {
+  height: 240px; display: flex; align-items: center; justify-content: center;
+  font-size: 5rem; border-radius: 12px 12px 0 0; overflow: hidden;
+  background-size: cover; background-position: center;
+}
+.modal-cover-1 { background: linear-gradient(135deg,#667eea,#764ba2); }
+.modal-cover-2 { background: linear-gradient(135deg,#11998e,#38ef7d); }
+.modal-cover-3 { background: linear-gradient(135deg,#fc4a1a,#f7b733); }
+.modal-close {
+  position: absolute; top: 1rem; right: 1rem;
+  width: 34px; height: 34px; border-radius: 50%;
+  background: rgba(255,255,255,0.9); border: none; cursor: pointer;
+  font-size: 1.1rem; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2); transition: background 0.2s;
+}
+.modal-close:hover { background: #fff; }
+.modal-body { padding: 2rem; }
+.modal-cat { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; color: #e85d26; margin-bottom: 0.4rem; }
+.modal-title { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: #111; margin-bottom: 1rem; }
+.modal-desc { color: #555; line-height: 1.85; font-size: 0.97rem; margin-bottom: 1.5rem; }
+
+/* ── EXTRA PHOTO ── */
+/* ─────────────────────────────────────────────────────────────── */
+/* SECOND PROJECT PHOTO: place an <img> inside .modal-extra-photo */
+/* Example: <img src="project1-photo2.jpg" alt="...">             */
+/* ─────────────────────────────────────────────────────────────── */
+.modal-extra-photo {
+  background: #f0f0f0; border-radius: 8px; height: 200px;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; margin-bottom: 1.5rem; color: #bbb;
+  font-size: 0.82rem; font-weight: 700; gap: 0.5rem; flex-direction: column;
+}
+.modal-extra-photo svg { width: 32px; height: 32px; fill: #ccc; }
+/* When ready: .modal-extra-photo img { width:100%; height:100%; object-fit:cover; } */
+
+/* ── VIDEO ── */
+/* ─────────────────────────────────────────────────────────────── */
+/* PROJECT VIDEO: replace the placeholder below with:             */
+/* <video controls src="project1-demo.mp4"></video>               */
+/* or an embedded YouTube iframe.                                 */
+/* ─────────────────────────────────────────────────────────────── */
+.modal-video-wrap {
+  background: #111; border-radius: 8px; height: 220px;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; margin-bottom: 1rem; color: #888;
+  font-size: 0.82rem; font-weight: 700; gap: 0.6rem; flex-direction: column;
+}
+.modal-video-wrap svg { width: 40px; height: 40px; fill: #555; }
+.modal-video-wrap span { color: #666; font-size: 0.78rem; }
+/* When ready: .modal-video-wrap video { width:100%; height:100%; object-fit:cover; } */
+
+.modal-tech { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.modal-tech-tag { background: #fef4ef; color: #e85d26; font-size: 0.78rem; font-weight: 700; padding: 0.3rem 0.8rem; border-radius: 4px; }
+
+/* ── EDUCATION ── */
+.edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 1.5rem; }
+.edu-card {
+  background: #fff; border: 1px solid #eee; border-radius: 10px; padding: 1.6rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.04); transition: all 0.25s;
+  border-left: 4px solid #e85d26;
+}
+.edu-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.1); transform: translateY(-3px); }
+.edu-date { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #e85d26; margin-bottom: 0.5rem; }
+.edu-degree { font-size: 1rem; font-weight: 700; color: #111; margin-bottom: 0.2rem; }
+.edu-school { font-size: 0.88rem; color: #555; margin-bottom: 0.3rem; }
+.edu-score { font-size: 0.82rem; color: #888; }
+
+/* ── CERTIFICATIONS & ACHIEVEMENTS ── */
+.certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 1.2rem; margin-bottom: 2rem; }
+.cert-card {
+  background: #fff; border: 1px solid #eee; border-radius: 10px; padding: 1.3rem;
+  display: flex; gap: 0.9rem; align-items: flex-start;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.04); transition: all 0.25s;
+}
+.cert-card:hover { box-shadow: 0 6px 22px rgba(0,0,0,0.1); transform: translateY(-3px); }
+.cert-icon {
+  width: 42px; height: 42px; border-radius: 9px; flex-shrink: 0;
+  background: linear-gradient(135deg,#e85d26,#f7a870);
+  display: flex; align-items: center; justify-content: center; font-size: 1.15rem;
+}
+.cert-title { font-size: 0.9rem; font-weight: 700; color: #111; margin-bottom: 0.2rem; }
+.cert-org { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #e85d26; }
+
+.achievement-card {
+  background: linear-gradient(135deg,#e85d26,#f7a870);
+  border-radius: 10px; padding: 1.8rem 2rem;
+  display: flex; gap: 1.5rem; align-items: center; color: #fff;
+}
+.ach-icon { font-size: 3rem; flex-shrink: 0; }
+.ach-title { font-size: 1.1rem; font-weight: 800; margin-bottom: 0.3rem; }
+.ach-desc { font-size: 0.9rem; opacity: 0.9; line-height: 1.6; }
+
+/* ── CONTACT ── */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.contact-intro p { color: #555; line-height: 1.85; font-size: 0.97rem; margin-bottom: 1rem; }
+.contact-links { display: flex; flex-direction: column; gap: 0.85rem; }
+.contact-item {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 1rem 1.2rem; background: #fff;
+  border: 1px solid #eee; border-radius: 8px;
+  text-decoration: none; color: #333;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04); transition: all 0.22s;
+}
+.contact-item:hover { border-color: #e85d26; transform: translateX(4px); }
+.ci-icon { font-size: 1.2rem; width: 38px; height: 38px; border-radius: 8px; background: #fef4ef; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.ci-label { font-size: 0.7rem; color: #aaa; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.ci-value { font-size: 0.87rem; font-weight: 600; color: #333; }
+
+/* ── FOOTER ── */
+footer { background: #111; color: #888; padding: 2rem 5%; text-align: center; font-size: 0.83rem; }
+footer span { color: #e85d26; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; text-align: center; }
+  .hero-btns,.hero-social { justify-content: center; }
+  .hero-photo-wrap { order: -1; }
+  .hero-photo-frame { width: 200px; height: 200px; }
+  .about-grid,.contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-name">Greeshma <span>K Mani</span></div>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a class="nav-brand" href="#home">Greeshma K Mani</a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section id="home">
+  <div class="hero-inner">
+    <div>
+      <p class="hero-eyebrow">ECE Engineer · Embedded Systems · VLSI</p>
+      <h1 class="hero-name">Greeshma<br>K Mani</h1>
+      <p class="hero-role">B.Tech Electronics &amp; Communication Engineering</p>
+      <p class="hero-location">📍 FISAT, Angamaly · APJ Abdul Kalam Technological University</p>
+      <div class="hero-btns">
+        <a href="#about" class="btn btn-orange">About Me</a>
+        <a href="#projects" class="btn btn-outline">My Projects</a>
+      </div>
+      <div class="hero-social">
+        <a href="mailto:greeshmamanikottayil@gmail.com" title="Email">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
+        <a href="https://github.com/Greeshma-k-mani" target="_blank" title="GitHub">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        </a>
+        <a href="https://linkedin.com/in/greeshma-k-mani" target="_blank" title="LinkedIn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="https://greeshma-k-mani.github.io" target="_blank" title="Portfolio">🌐</a>
+      </div>
+    </div>
+
+    <!-- HERO PHOTO -->
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-frame">
+        <!--
+          ════════════════════════════════════════════════
+          ADD YOUR PHOTO HERE
+          Replace this placeholder block with:
+          <img src="greeshma-photo.jpg" alt="Greeshma K Mani"
+               style="width:100%;height:100%;object-fit:cover;">
+          ════════════════════════════════════════════════
+        -->
+        <div class="hero-photo-placeholder">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+          </svg>
+          Add your photo here
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ ABOUT ═══════════ -->
+<section id="about" class="section section-alt">
+  <div class="section-inner">
+    <div class="section-eyebrow reveal">About Me</div>
+    <h2 class="section-heading reveal">Hello, I'm Greeshma 👋</h2>
+
+    <div class="about-grid">
+      <div class="about-text reveal rd1">
+        <p>I'm a <strong>B.Tech Electronics &amp; Communication Engineering</strong> student at <strong>FISAT, Angamaly</strong>, with a minor in Computer Science and a CGPA of <strong>8.53</strong>.</p>
+        <p>I love working at the intersection of hardware and software — from building smart embedded systems to designing VR applications. I'm a methodical problem solver who enjoys breaking down complex challenges into clear, testable steps.</p>
+        <p>Outside the lab I enjoy <strong>robotics</strong>, <strong>3D modelling</strong>, and exploring what's possible with IoT. I'm always looking for opportunities to build, collaborate, and learn something new.</p>
+        <p>Feel free to reach me at <a href="mailto:greeshmamanikottayil@gmail.com" style="color:#e85d26;font-weight:700;">greeshmamanikottayil@gmail.com</a></p>
+
+        <!-- SKILL LOGOS -->
+        <div class="skills-section-inner">
+
+          <div class="skill-group">
+            <div class="skill-group-label">Electronics &amp; HDL</div>
+            <div class="skill-icons">
+              <div class="skill-icon-item">
+                <div class="icon-box" style="background:#1572B6;font-size:1.1rem;">⚡</div>
+                <span>Digital<br>Electronics</span>
+              </div>
+              <div class="skill-icon-item">
+                <div class="icon-box" style="background:#e85d26;font-size:0.85rem;">VHD</div>
+                <span>Verilog<br>HDL</span>
+              </div>
+              <div class="skill-icon-item">
+                <div class="icon-box" style="background:#6B21A8;font-size:0.85rem;">VLSI</div>
+                <span>VLSI<br>Fundamentals</span>
+              </div>
+              <div class="skill-icon-item">
+                <div class="icon-box" style="background:#0ea5e9;font-size:0.85rem;">∿</div>
+                <span>Analog<br>Electronics</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-group-label">Embedded Systems</div>
+            <div class="skill-icons">
+              <div class="skill-icon-item">
+                <img class="skill-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/raspberrypi/raspberrypi-original.svg" alt="Raspberry Pi">
+                <span>Raspberry<br>Pi</span>
+              </div>
+              <div class="skill-icon-item">
+                <div class="icon-box" style="background:#E7352B;font-size:0.85rem;">ESP</div>
+                <span>ESP32 /<br>ESP8266</span>
+              </div>
+              <div class="skill-icon-item">
+                <div class="icon-box" style="background:#00979D;font-size:0.85rem;">UNO</div>
+                <span>Arduino</span>
+              </div>
+              <div class="skill-icon-item">
+                <div class="icon-box" style="background:#555;font-size:0.85rem;">I/O</div>
+                <span>Sensor<br>Interfacing</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-group-label">Programming</div>
+            <div class="skill-icons">
+              <div class="skill-icon-item">
+                <img class="skill-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+                <span>Python</span>
+              </div>
+              <div class="skill-icon-item">
+                <img class="skill-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C">
+                <span>C</span>
+              </div>
+              <div class="skill-icon-item">
+                <div class="icon-box" style="background:#0047AB;font-size:0.85rem;">EC</div>
+                <span>Embedded<br>C</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-group-label">Tools &amp; Platforms</div>
+            <div class="skill-icons">
+              <div class="skill-icon-item">
+                <div class="icon-box" style="background:#ff6600;font-size:0.75rem;">LT</div>
+                <span>LTspice</span>
+              </div>
+              <div class="skill-icon-item">
+                <img class="skill-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matlab/matlab-original.svg" alt="MATLAB">
+                <span>MATLAB</span>
+              </div>
+              <div class="skill-icon-item">
+                <img class="skill-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code">
+                <span>VS Code</span>
+              </div>
+              <div class="skill-icon-item">
+                <img class="skill-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux">
+                <span>Linux</span>
+              </div>
+              <div class="skill-icon-item">
+                <img class="skill-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub">
+                <span>GitHub</span>
+              </div>
+              <div class="skill-icon-item">
+                <div class="icon-box" style="background:#1C4B82;font-size:0.75rem;">KiC</div>
+                <span>KiCad</span>
+              </div>
+              <div class="skill-icon-item">
+                <div class="icon-box" style="background:#FF6900;font-size:0.75rem;">F360</div>
+                <span>Fusion 360</span>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /skills-section-inner -->
+      </div>
+
+      <!-- RIGHT: stats + interests -->
+      <div>
+        <div class="about-stats reveal rd2">
+          <div class="stat-box">
+            <div class="stat-num">8.53</div>
+            <div class="stat-lbl">Current CGPA</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">3+</div>
+            <div class="stat-lbl">Projects Built</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">5</div>
+            <div class="stat-lbl">Certifications</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">🥇</div>
+            <div class="stat-lbl">INNOVIX 2026</div>
+          </div>
+        </div>
+
+        <div style="margin-top:1.4rem;background:#fef4ef;border-radius:10px;padding:1.3rem;border:1px solid #fad7c5;" class="reveal rd3">
+          <div class="skill-group-label" style="margin-bottom:0.8rem;">Interests</div>
+          <div class="skill-icons">
+            <div class="skill-icon-item"><span style="font-size:1.5rem;">🤖</span><span>Robotics</span></div>
+            <div class="skill-icon-item"><span style="font-size:1.5rem;">🖨️</span><span>3D Modelling</span></div>
+            <div class="skill-icon-item"><span style="font-size:1.5rem;">💻</span><span>Programming</span></div>
+            <div class="skill-icon-item"><span style="font-size:1.5rem;">📡</span><span>IoT</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PROJECTS ═══════════ -->
+<section id="projects" class="section">
+  <div class="section-inner">
+    <div class="section-eyebrow reveal">Portfolio</div>
+    <h2 class="section-heading reveal">My Projects</h2>
+    <p class="section-sub reveal rd1">Click any project to learn more — including photos and demo video.</p>
+
+    <div class="projects-grid">
+
+      <!-- PROJECT 1 -->
+      <div class="project-card reveal rd1" onclick="openModal('modal-1')">
+        <div class="project-thumb pt-1">
+          <!--
+            ══════════════════════════════════════════
+            PROJECT 1 – COVER PHOTO
+            Replace the emoji below with an <img> tag:
+            <img src="home-assistant-cover.jpg"
+                 style="width:100%;height:100%;object-fit:cover;" alt="">
+            ══════════════════════════════════════════
+          -->
+          <span class="thumb-emoji">🤖</span>
+          <div class="project-thumb-overlay"><span class="overlay-text">View Project →</span></div>
+        </div>
+        <div class="project-body">
+          <div class="project-cat">Mini Project · Embedded Systems</div>
+          <div class="project-title">Human Centric Embodied Home Assistant</div>
+          <div class="project-desc">Raspberry Pi robot with face recognition, voice control, and radar-triggered OLED feedback — running on ESP32/ESP8266.</div>
+          <div class="project-tags">
+            <span class="p-tag">Raspberry Pi</span>
+            <span class="p-tag">ESP32</span>
+            <span class="p-tag">Python</span>
+            <span class="p-tag">Computer Vision</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 2 -->
+      <div class="project-card reveal rd2" onclick="openModal('modal-2')">
+        <div class="project-thumb pt-2">
+          <!--
+            ══════════════════════════════════════════
+            PROJECT 2 – COVER PHOTO
+            Replace the emoji below with an <img> tag:
+            <img src="rain-shield-cover.jpg"
+                 style="width:100%;height:100%;object-fit:cover;" alt="">
+            ══════════════════════════════════════════
+          -->
+          <span class="thumb-emoji">🌧️</span>
+          <div class="project-thumb-overlay"><span class="overlay-text">View Project →</span></div>
+        </div>
+        <div class="project-body">
+          <div class="project-cat">Micro Project · Arduino</div>
+          <div class="project-title">Automated Rain Shield System</div>
+          <div class="project-desc">Arduino-based motorized rain protection triggered by rain sensors, with real-time monitoring and display.</div>
+          <div class="project-tags">
+            <span class="p-tag">Arduino</span>
+            <span class="p-tag">Embedded C</span>
+            <span class="p-tag">Sensors</span>
+            <span class="p-tag">Automation</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 3 -->
+      <div class="project-card reveal rd3" onclick="openModal('modal-3')">
+        <div class="project-thumb pt-3">
+          <!--
+            ══════════════════════════════════════════
+            PROJECT 3 – COVER PHOTO
+            Replace the emoji below with an <img> tag:
+            <img src="virtual-horizon-cover.jpg"
+                 style="width:100%;height:100%;object-fit:cover;" alt="">
+            ══════════════════════════════════════════
+          -->
+          <span class="thumb-emoji">🥽</span>
+          <div class="project-thumb-overlay"><span class="overlay-text">View Project →</span></div>
+        </div>
+        <div class="project-body">
+          <div class="project-cat">VR Workshop · Unity</div>
+          <div class="project-title">Virtual Horizon</div>
+          <div class="project-desc">Unity-based VR app exploring education and tourism use cases — presented at a workshop showcase.</div>
+          <div class="project-tags">
+            <span class="p-tag">Unity</span>
+            <span class="p-tag">VR</span>
+            <span class="p-tag">C#</span>
+            <span class="p-tag">3D Design</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROJECT MODALS ══ -->
+
+<!-- MODAL 1 -->
+<div class="modal-backdrop" id="modal-1" onclick="closeOnBackdrop(event,'modal-1')">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-cover modal-cover-1">
+        <!--
+          ════════════════════════════════════════════════
+          PROJECT 1 – MODAL COVER PHOTO
+          Replace gradient with:
+          <img src="home-assistant-cover.jpg"
+               style="width:100%;height:100%;object-fit:cover;" alt="">
+          ════════════════════════════════════════════════
+        -->
+        🤖
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-1')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-cat">Mini Project · Embedded Systems</div>
+      <div class="modal-title">Human Centric Embodied Home Assistant</div>
+      <div class="modal-desc">
+        A Raspberry Pi-based smart home assistant with 3DOF wheel-based mobility, voice interaction, vision-based face recognition, and radar-triggered OLED facial feedback running across ESP32 and ESP8266 hardware. The robot can navigate autonomously, recognize family members by face, respond to voice commands, and display emotional feedback on its OLED screen based on proximity detected by radar sensors.
+      </div>
+
+      <!-- SECOND PHOTO -->
+      <div class="modal-extra-photo">
+        <!--
+          ════════════════════════════════════════════════
+          PROJECT 1 – SECOND PHOTO
+          Replace this placeholder with:
+          <img src="home-assistant-photo2.jpg"
+               alt="Home Assistant – Build Photo"
+               style="width:100%;height:100%;object-fit:cover;">
+          ════════════════════════════════════════════════
+        -->
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+        Add a second project photo here
+      </div>
+
+      <!-- VIDEO -->
+      <div class="modal-video-wrap">
+        <!--
+          ════════════════════════════════════════════════
+          PROJECT 1 – DEMO VIDEO
+          Option A – local video file:
+          <video controls style="width:100%;height:100%;object-fit:cover;">
+            <source src="home-assistant-demo.mp4" type="video/mp4">
+          </video>
+          Option B – YouTube embed:
+          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/YOUR_ID"
+            frameborder="0" allowfullscreen style="border-radius:8px;"></iframe>
+          ════════════════════════════════════════════════
+        -->
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
+        <span>Add demo video here (local file or YouTube embed)</span>
+      </div>
+
+      <div class="modal-tech">
+        <span class="modal-tech-tag">Raspberry Pi</span>
+        <span class="modal-tech-tag">ESP32 / ESP8266</span>
+        <span class="modal-tech-tag">Python</span>
+        <span class="modal-tech-tag">OpenCV</span>
+        <span class="modal-tech-tag">OLED Display</span>
+        <span class="modal-tech-tag">Radar Sensor</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL 2 -->
+<div class="modal-backdrop" id="modal-2" onclick="closeOnBackdrop(event,'modal-2')">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-cover modal-cover-2">
+        <!--
+          ════════════════════════════════════════════════
+          PROJECT 2 – MODAL COVER PHOTO
+          <img src="rain-shield-cover.jpg"
+               style="width:100%;height:100%;object-fit:cover;" alt="">
+          ════════════════════════════════════════════════
+        -->
+        🌧️
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-2')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-cat">Micro Project · Arduino</div>
+      <div class="modal-title">Automated Rain Shield System</div>
+      <div class="modal-desc">
+        An Arduino-based automated rain protection system using sensor-driven decision-making to trigger a motorized shield mechanism, with real-time monitoring and display output. When the rain sensor detects precipitation, the system automatically deploys a motorized protective shield and displays status information in real time, with manual override capability.
+      </div>
+
+      <!-- SECOND PHOTO -->
+      <div class="modal-extra-photo">
+        <!--
+          ════════════════════════════════════════════════
+          PROJECT 2 – SECOND PHOTO
+          <img src="rain-shield-photo2.jpg"
+               alt="Rain Shield – Circuit Photo"
+               style="width:100%;height:100%;object-fit:cover;">
+          ════════════════════════════════════════════════
+        -->
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+        Add a second project photo here
+      </div>
+
+      <!-- VIDEO -->
+      <div class="modal-video-wrap">
+        <!--
+          ════════════════════════════════════════════════
+          PROJECT 2 – DEMO VIDEO
+          <video controls style="width:100%;height:100%;object-fit:cover;">
+            <source src="rain-shield-demo.mp4" type="video/mp4">
+          </video>
+          ════════════════════════════════════════════════
+        -->
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
+        <span>Add demo video here (local file or YouTube embed)</span>
+      </div>
+
+      <div class="modal-tech">
+        <span class="modal-tech-tag">Arduino</span>
+        <span class="modal-tech-tag">Embedded C</span>
+        <span class="modal-tech-tag">Rain Sensor</span>
+        <span class="modal-tech-tag">Servo Motor</span>
+        <span class="modal-tech-tag">LCD Display</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL 3 -->
+<div class="modal-backdrop" id="modal-3" onclick="closeOnBackdrop(event,'modal-3')">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-cover modal-cover-3">
+        <!--
+          ════════════════════════════════════════════════
+          PROJECT 3 – MODAL COVER PHOTO
+          <img src="virtual-horizon-cover.jpg"
+               style="width:100%;height:100%;object-fit:cover;" alt="">
+          ════════════════════════════════════════════════
+        -->
+        🥽
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-3')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-cat">VR Workshop · Unity</div>
+      <div class="modal-title">Virtual Horizon</div>
+      <div class="modal-desc">
+        A Unity-based VR application exploring education and tourism use cases. Co-developed and presented the project's concepts and implementation to students and visitors at the workshop showcase. The application immerses users in virtual educational environments and virtual tourism destinations, making learning and exploration accessible to everyone.
+      </div>
+
+      <!-- SECOND PHOTO -->
+      <div class="modal-extra-photo">
+        <!--
+          ════════════════════════════════════════════════
+          PROJECT 3 – SECOND PHOTO
+          <img src="virtual-horizon-photo2.jpg"
+               alt="Virtual Horizon – Showcase Photo"
+               style="width:100%;height:100%;object-fit:cover;">
+          ════════════════════════════════════════════════
+        -->
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+        Add a second project photo here
+      </div>
+
+      <!-- VIDEO -->
+      <div class="modal-video-wrap">
+        <!--
+          ════════════════════════════════════════════════
+          PROJECT 3 – DEMO VIDEO
+          <video controls style="width:100%;height:100%;object-fit:cover;">
+            <source src="virtual-horizon-demo.mp4" type="video/mp4">
+          </video>
+          ════════════════════════════════════════════════
+        -->
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
+        <span>Add demo video here (local file or YouTube embed)</span>
+      </div>
+
+      <div class="modal-tech">
+        <span class="modal-tech-tag">Unity</span>
+        <span class="modal-tech-tag">C#</span>
+        <span class="modal-tech-tag">VR / XR</span>
+        <span class="modal-tech-tag">3D Modelling</span>
+        <span class="modal-tech-tag">Fusion 360</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ EDUCATION ═══════════ -->
+<section id="education" class="section section-alt">
+  <div class="section-inner">
+    <div class="section-eyebrow reveal">Education</div>
+    <h2 class="section-heading reveal">Academic Background</h2>
+    <p class="section-sub reveal rd1">Building a strong foundation in electronics and computer science.</p>
+
+    <div class="edu-grid">
+      <div class="edu-card reveal rd1">
+        <div class="edu-date">2023 – 2027</div>
+        <div class="edu-degree">B.Tech – Electronics &amp; Communication Engineering</div>
+        <div class="edu-school">FISAT, Angamaly · APJ Abdul Kalam Technological University</div>
+        <div class="edu-score">Minor: Computer Science &nbsp;·&nbsp; CGPA: 8.53</div>
+      </div>
+      <div class="edu-card reveal rd2">
+        <div class="edu-date">2021 – 2023</div>
+        <div class="edu-degree">Higher Secondary Education — Class XII</div>
+        <div class="edu-school">Sobhana Public School, Kothamangalam</div>
+        <div class="edu-score">CBSE &nbsp;·&nbsp; 84.6%</div>
+      </div>
+      <div class="edu-card reveal rd3">
+        <div class="edu-date">2020 – 2021</div>
+        <div class="edu-degree">High School — Class X</div>
+        <div class="edu-school">Sobhana Public School, Kothamangalam</div>
+        <div class="edu-score">CBSE &nbsp;·&nbsp; 90.2%</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CERTIFICATIONS & ACHIEVEMENTS ═══════════ -->
+<section id="certifications" class="section">
+  <div class="section-inner">
+    <div class="section-eyebrow reveal">Certifications &amp; Achievements</div>
+    <h2 class="section-heading reveal">Credentials</h2>
+    <p class="section-sub reveal rd1">Continuous learning through recognised programs and competitions.</p>
+
+    <div class="certs-grid">
+      <div class="cert-card reveal rd1">
+        <div class="cert-icon">🔌</div>
+        <div>
+          <div class="cert-title">FPGA Prototyping Using Verilog HDL</div>
+          <div class="cert-org">NIELIT</div>
+        </div>
+      </div>
+      <div class="cert-card reveal rd2">
+        <div class="cert-icon">🧠</div>
+        <div>
+          <div class="cert-title">Microprocessors and Microcontrollers</div>
+          <div class="cert-org">NPTEL</div>
+        </div>
+      </div>
+      <div class="cert-card reveal rd3">
+        <div class="cert-icon">🤖</div>
+        <div>
+          <div class="cert-title">Machine Learning</div>
+          <div class="cert-org">NSDC</div>
+        </div>
+      </div>
+      <div class="cert-card reveal rd4">
+        <div class="cert-icon">🐍</div>
+        <div>
+          <div class="cert-title">Python for Data Science</div>
+          <div class="cert-org">NPTEL</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="achievement-card reveal rd2">
+      <div class="ach-icon">🏆</div>
+      <div>
+        <div class="ach-title">1st Place — INNOVIX (RISE 2026) Project Exhibition</div>
+        <div class="ach-desc">Awarded first place at the RISE 2026 inter-college project exhibition, recognising outstanding innovation and practical engineering excellence among participating teams.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CONTACT ═══════════ -->
+<section id="contact" class="section section-alt">
+  <div class="section-inner">
+    <div class="section-eyebrow reveal">Contact</div>
+    <h2 class="section-heading reveal">Get In Touch</h2>
+    <p class="section-sub reveal rd1">Open to internships, collaborations, and new opportunities.</p>
+
+    <div class="contact-grid">
+      <div class="contact-intro reveal rd1">
+        <p>Whether you have an internship opportunity, a project collaboration idea, or just want to connect — I'd love to hear from you.</p>
+        <p>I'm always looking for chances to build something meaningful and learn alongside great people.</p>
+        <a href="mailto:greeshmamanikottayil@gmail.com" class="btn btn-orange">Send an Email ✉</a>
+      </div>
+      <div class="contact-links reveal rd2">
+        <a href="mailto:greeshmamanikottayil@gmail.com" class="contact-item">
+          <div class="ci-icon">✉️</div>
+          <div><div class="ci-label">Email</div><div class="ci-value">greeshmamanikottayil@gmail.com</div></div>
+        </a>
+        <a href="tel:7356390238" class="contact-item">
+          <div class="ci-icon">📞</div>
+          <div><div class="ci-label">Phone</div><div class="ci-value">+91 73563 90238</div></div>
+        </a>
+        <a href="https://linkedin.com/in/greeshma-k-mani" target="_blank" class="contact-item">
+          <div class="ci-icon">💼</div>
+          <div><div class="ci-label">LinkedIn</div><div class="ci-value">linkedin.com/in/greeshma-k-mani</div></div>
+        </a>
+        <a href="https://github.com/Greeshma-k-mani" target="_blank" class="contact-item">
+          <div class="ci-icon">🐙</div>
+          <div><div class="ci-label">GitHub</div><div class="ci-value">github.com/Greeshma-k-mani</div></div>
+        </a>
+        <a href="https://greeshma-k-mani.github.io" target="_blank" class="contact-item">
+          <div class="ci-icon">🌐</div>
+          <div><div class="ci-label">Portfolio</div><div class="ci-value">greeshma-k-mani.github.io</div></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 <span>Greeshma K Mani</span> · All rights reserved.</p>
+  <p style="margin-top:0.3rem;font-size:0.75rem;">FISAT, Angamaly · ECE Engineer</p>
+</footer>
+
+<script>
+  // Loader
+  window.addEventListener('load', () => {
+    setTimeout(() => document.getElementById('loader').classList.add('done'), 1150);
+  });
+
+  // Nav shadow
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Scroll reveal
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // Modal helpers
+  function openModal(id) {
+    document.getElementById(id).classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(id) {
+    document.getElementById(id).classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function closeOnBackdrop(e, id) {
+    if (e.target === document.getElementById(id)) closeModal(id);
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') document.querySelectorAll('.modal-backdrop.open').forEach(m => { m.classList.remove('open'); document.body.style.overflow = ''; });
+  });
+</script>
+</body>
+</html>
